@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+#info__card {
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 786px){
+  #info__card{
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
