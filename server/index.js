@@ -3,11 +3,11 @@ import cors from "cors";
 import mongoose from "mongoose";
 import Skill from "./models/Skill.js";
 import dotenv from "dotenv";
-import multer from "multer";
+
 import crypto from "crypto";
-import path from "path";
-import { GridFsStorage } from "multer-gridfs-storage";
-import Grid from "gridfs-stream";
+
+
+
 
 import Education from "./models/Education.js";
 import Project from "./models/Project.js";
@@ -30,45 +30,10 @@ mongoose.connect(mongoURL, {
 
 const conn = mongoose.connection;
 
-let gfs;
 
-conn.once("open", () => {
-  gfs = Grid(conn.db, mongoose.mongo);
-//   console.log("GFS:", gfs);
-  gfs.collection("uploads");
 
-});
 
-const storage = new GridFsStorage({
-  url: mongoURL,
-  file: (req, file) => {
-    return new Promise((resolve, reject) => {
-      crypto.randomBytes(16, (err, buf) => {
-        if (err) {
-          return reject(err);
-        }
-        const filename = buf.toString("hex") + path.extname(file.originalname);
-        const fileInfo = {
-          filename: filename,
-          bucketName: "uploads",
-        };
-        resolve(fileInfo);
-      });
-    });
-  },
-});
 
-const upload = multer({ storage });
-
-// Handle uploads
-app.post("/upload", upload.single("file"), (req, res) => {
-  try {
-    res.json({ file: req.file });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error uploading file" });
-  }
-});
 
 // Routes to fetch data
 app.get("/skills", async (req, res) => {
