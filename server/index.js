@@ -16,12 +16,12 @@ const app = express();
 const port = 8080;
 
 app.use(express.json());
-const corsOptions = {
-  origin: "https://personal-portfolio-client-git-main-omaute2002s-projects.vercel.app",
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: "https://personal-portfolio-client-git-main-omaute2002s-projects.vercel.app",
+//   methods: ["GET", "POST"],
+//   allowedHeaders: ["Content-Type"],
+// };
+app.use(cors());
 
 
 const mongoURL =
@@ -38,7 +38,7 @@ mongoose
 const conn = mongoose.connection;
 
 // Routes to fetch data
-app.get("/api/skills", async (req, res) => {
+app.get("/skills", async (req, res) => {
   try {
     const skills = await Skill.find();
     res.status(200).json(skills);
@@ -47,7 +47,7 @@ app.get("/api/skills", async (req, res) => {
   }
 });
 
-app.get("/api/education", async (req, res) => {
+app.get("/education", async (req, res) => {
   try {
     const education = await Education.find();
     res.status(200).json(education);
@@ -56,7 +56,7 @@ app.get("/api/education", async (req, res) => {
   }
 });
 
-app.get("/api/projects", async (req, res) => {
+app.get("/projects", async (req, res) => {
   try {
     const projects = await Project.find();
     res.status(200).json(projects);
@@ -65,7 +65,7 @@ app.get("/api/projects", async (req, res) => {
   }
 });
 
-app.get("/api/experiences", async (req, res) => {
+app.get("/experiences", async (req, res) => {
   try {
     const experiences = await Experience.find();
     res.status(200).json(experiences);
