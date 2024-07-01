@@ -11,7 +11,7 @@ function InformationCard() {
   useEffect(() => { // useEffect hook 
     async function fetchCardDetails() {
       try {
-        const response = await fetch(`http://localhost:8080/api/${cardContext}`, {
+        const response = await fetch(`https://personal-portfolio-server-eight-chi.vercel.app//api/${cardContext}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
