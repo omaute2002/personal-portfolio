@@ -6,9 +6,6 @@ import dotenv from "dotenv";
 
 import crypto from "crypto";
 
-
-
-
 import Education from "./models/Education.js";
 import Project from "./models/Project.js";
 import Experience from "./models/Experience.js";
@@ -30,13 +27,8 @@ mongoose.connect(mongoURL, {
 
 const conn = mongoose.connection;
 
-
-
-
-
-
 // Routes to fetch data
-app.get("/skills", async (req, res) => {
+app.get("/api/skills", async (req, res) => {
   try {
     const skills = await Skill.find();
     res.status(200).json(skills);
@@ -45,7 +37,7 @@ app.get("/skills", async (req, res) => {
   }
 });
 
-app.get("/education", async (req, res) => {
+app.get("/api/education", async (req, res) => {
   try {
     const education = await Education.find();
     res.status(200).json(education);
@@ -54,7 +46,7 @@ app.get("/education", async (req, res) => {
   }
 });
 
-app.get("/projects", async (req, res) => {
+app.get("/api/projects", async (req, res) => {
   try {
     const projects = await Project.find();
     res.status(200).json(projects);
@@ -63,7 +55,7 @@ app.get("/projects", async (req, res) => {
   }
 });
 
-app.get("/experiences", async (req, res) => {
+app.get("/api/experiences", async (req, res) => {
   try {
     const experiences = await Experience.find();
     res.status(200).json(experiences);
@@ -72,39 +64,7 @@ app.get("/experiences", async (req, res) => {
   }
 });
 
-// Backend - Node.js (Express)
-app.get("/files/:filename", (req, res) => {
-  if (!gfs) {
-    return res.status(500).json({
-      err: "GridFS stream is not initialized",
-    });
-  }
 
-  gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
-    if (err) {
-      console.error("Error finding file:", err);
-      return res.status(500).json({
-        err: "Internal server error",
-      });
-    }
-    if (!file || file.length === 0) {
-      return res.status(404).json({
-        err: "No file exists",
-      });
-    }
-
-    const readstream = gfs.createReadStream(file.filename);
-    console.log("File found, streaming", file.filename);
-    readstream.on("error", (err) => {
-      console.error("Error reading stream:", err);
-      res.status(500).json({
-        err: "Error reading file stream",
-      });
-    });
-
-    readstream.pipe(res);
-  });
-});
 
 app.listen(port, () => {
   console.log(`Server is running at ${port}`);
