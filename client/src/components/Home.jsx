@@ -27,38 +27,14 @@ function Home() {
       once: false, // Ensure the animation happens more than once
     });
 
-    fetchResumeUrl();
+
   }, []);
 
   useEffect(() => {
     AOS.refreshHard();
   }, [cardContext]);
 
-  useEffect(() => {
-    const handleMouseMove = (event) => {
-      setPosition({ x: event.clientX, y: event.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
-  async function fetchResumeUrl() {
-    try {
-      const filename = "d47e3713fecffced6b95390df7f73233.pdf";
-      const response = await fetch(`http://localhost:8080/files/${filename}`);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const blob = await response.blob();
-      const fileURL = URL.createObjectURL(blob);
-      console.log("URL: ", fileURL);
-      setResumeUrl(fileURL);
-    } catch (err) {
-      console.error("Error fetching resume: ", err);
-    }
-  }
+  
 
   function downloadResume() {
     console.log("resume URl: ", resumeUrl);

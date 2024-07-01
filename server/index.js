@@ -13,17 +13,19 @@ import Experience from "./models/Experience.js";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8000;
+const port = 8080;
 
 app.use(express.json());
 app.use(cors());
 
-const mongoURL = process.env.MONGODB_URL;
+const mongoURL = "mongodb+srv://omaute2002:wjRCzLSGZbkr9vEG@cluster0.wzpr85j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(mongoURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+})
+.then(()=> console.log("Database connected"))
+.catch((err) => console.log("error", err));
 
 const conn = mongoose.connection;
 
@@ -69,3 +71,31 @@ app.get("/api/experiences", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running at ${port}`);
 });
+
+
+export default app;
+
+
+
+
+// {
+//   "version": 2,
+//   "name": "personal-portfolio",
+//   "builds": [
+//     {
+//       "src": "client/package.json",
+//       "use": "@vercel/static-build",
+//       "config": {
+//         "distDir": "client/build"
+//       }
+//     },
+//     {
+//       "src": "server/index.js",
+//       "use": "@vercel/node"
+//     }
+//   ],
+//   "rewrites": [
+//     { "source": "/api/(.*)", "destination": "/server/index.js" },
+//     { "source": "/(.*)", "destination": "/client/build/$1" }
+//   ]
+// }
