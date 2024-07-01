@@ -13,6 +13,10 @@
         "src": "server/index.js",
         "use": "@vercel/node"
       }
+    ],
+    "rewrites": [
+      { "source": "/api/(.*)", "destination": "/server/index.js" },
+      { "source": "/(.*)", "destination": "/client/build/$1" }
     ]
   }
   
