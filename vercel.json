@@ -1,28 +1,22 @@
 {
-  "version": 2,
-  "name": "personal-portfolio",
-  "builds": [
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "client/build"
+    "version": 2,
+    "name": "personal-portfolio",
+    "builds": [
+      {
+        "src": "client/package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "client/build"
+        }
+      },
+      {
+        "src": "server/index.js",
+        "use": "@vercel/node"
       }
-    },
-    {
-      "src": "server/index.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/server/index.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/build/$1"
-    }
-  ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
-}
+    ],
+    "rewrites": [
+      { "source": "/api/(.*)", "destination": "/server/index.js" },
+      { "source": "/(.*)", "destination": "/client/build/$1" }
+    ]
+  }
+  
