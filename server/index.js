@@ -18,19 +18,21 @@ const port = 8080;
 app.use(express.json());
 app.use(cors());
 
-const mongoURL = "mongodb+srv://omaute2002:wjRCzLSGZbkr9vEG@cluster0.wzpr85j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoURL =
+  "mongodb+srv://omaute2002:wjRCzLSGZbkr9vEG@cluster0.wzpr85j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-mongoose.connect(mongoURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(()=> console.log("Database connected"))
-.catch((err) => console.log("error", err));
+mongoose
+  .connect(mongoURL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database connected"))
+  .catch((err) => console.log("error", err));
 
 const conn = mongoose.connection;
 
 // Routes to fetch data
-app.get("/api/skills", async (req, res) => {
+app.get("/skills", async (req, res) => {
   try {
     const skills = await Skill.find();
     res.status(200).json(skills);
@@ -39,7 +41,7 @@ app.get("/api/skills", async (req, res) => {
   }
 });
 
-app.get("/api/education", async (req, res) => {
+app.get("/education", async (req, res) => {
   try {
     const education = await Education.find();
     res.status(200).json(education);
@@ -48,7 +50,7 @@ app.get("/api/education", async (req, res) => {
   }
 });
 
-app.get("/api/projects", async (req, res) => {
+app.get("/projects", async (req, res) => {
   try {
     const projects = await Project.find();
     res.status(200).json(projects);
@@ -57,7 +59,7 @@ app.get("/api/projects", async (req, res) => {
   }
 });
 
-app.get("/api/experiences", async (req, res) => {
+app.get("/experiences", async (req, res) => {
   try {
     const experiences = await Experience.find();
     res.status(200).json(experiences);
@@ -66,17 +68,11 @@ app.get("/api/experiences", async (req, res) => {
   }
 });
 
-
-
 app.listen(port, () => {
   console.log(`Server is running at ${port}`);
 });
 
-
 export default app;
-
-
-
 
 // {
 //   "version": 2,
