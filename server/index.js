@@ -16,7 +16,13 @@ const app = express();
 const port = 8080;
 
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: "https://personal-portfolio-client-git-main-omaute2002s-projects.vercel.app",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+};
+app.use(cors(corsOptions));
+
 
 const mongoURL =
   "mongodb+srv://omaute2002:wjRCzLSGZbkr9vEG@cluster0.wzpr85j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
