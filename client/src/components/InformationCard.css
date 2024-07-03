@@ -2,11 +2,21 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 #info__card {
-  font-family: "Ubuntu Mono", monospace;
-  font-weight: 400;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 300;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+#info__card:hover{
+  background-color: rgb(30 41 59);
+
 }
 
 @media (max-width: 786px){

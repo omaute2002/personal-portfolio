@@ -73,8 +73,8 @@ function InformationCard() {
               className="max-w-lg mx-auto bg-slate-900 text-white p-6 rounded-lg shadow-md cursor-pointer mb-4"
             >
               <h4 className="text-sm sm:text-xs md:text-xs mb-2">{card.subHeading}</h4>
-              <h2 className="text-2xl font-bold mb-4">{card.heading}</h2>
-              <p className="text-base">{card.description}</p>
+              <a href={card.link} className="text-2xl font-bold mb-4">{card.heading}</a>
+              <p className="text-base mt-2" >{card.description}</p>
             </div>
           </div>
         ))}
