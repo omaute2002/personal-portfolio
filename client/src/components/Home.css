@@ -45,6 +45,9 @@
 @media (max-width: 786px) {
   .intro__para {
     margin-left: 0;
-    margin-right: 3rem;
+    margin-right: 2rem;
+  }
+  #name__div{
+    margin-top:2rem;
   }
 }

@@ -11,6 +11,7 @@
 
 @media (max-width: 786px){
   #info__card{
+    margin-top: 0rem;
     margin-left: 5%;
     margin-right: 5%;
   }
