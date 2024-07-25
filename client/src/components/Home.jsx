@@ -15,7 +15,7 @@ import {
   faFilePdf,
   faFileAlt,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { ChevronsDown } from 'lucide-react';
 function Home() {
   const { cardContext, setCardContext } = useContext(CardContext);
   const [resumeUrl, setResumeUrl] = useState("");
@@ -68,7 +68,10 @@ function Home() {
               my expertise. I am committed to utilizing my skills and drive to
               contribute to real-world problem solving, aiming to make a
               significant and impactful difference.
-            </p>
+            </p><div>
+            <ChevronsDown id="scroll-icon" className="text-slate-200 animate-bounce absolute mt-8 ml-1"/>
+            </div>
+            
             <div className="about__section text-xl">
               <p
                 className="text-lg text-slate-500 hover:text-white cursor-pointer"
