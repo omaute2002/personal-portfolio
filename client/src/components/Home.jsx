@@ -16,6 +16,8 @@ import {
   faFileAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { ChevronsDown } from 'lucide-react';
+
+
 function Home() {
   const { cardContext, setCardContext } = useContext(CardContext);
   const [resumeUrl, setResumeUrl] = useState("");

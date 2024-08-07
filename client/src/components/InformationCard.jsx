@@ -70,7 +70,7 @@ function InformationCard() {
           <div key={index}>
             <div
               id="info__card"
-              className="max-w-lg mx-auto bg-slate-900 text-white p-6 rounded-lg shadow-md cursor-pointer mb-4"
+              className="max-w-lg mx-auto bg-slate-900 text-white p-6 rounded-lg shadow-md cursor-pointer mb-4 neon-border"
             >
               <h4 className="text-sm sm:text-xs md:text-xs mb-2">{card.subHeading}</h4>
               <a href={card.link} className="text-2xl font-bold mb-4">{card.heading}</a>
